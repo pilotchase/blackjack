@@ -1,6 +1,6 @@
 /**
 (c) C. Morgan - 2018
-**/
+*/
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,11 +9,11 @@ public class Player
     private double money;
     private double mon;
     private String name;
-    private ArrayList<Card> pcard;
+    private ArrayList<Card> myCard;
     public Player(String nm, double m) {
         name = nm;
         money = m;
-        pcard = new ArrayList<Card>();
+        myCard = new ArrayList<Card>();
     }
     public double bet() {
         Scanner points = new Scanner(System.in);
@@ -27,18 +27,18 @@ public class Player
         return money;
     }
     public Card hit(Card c) {
-        pcard.add(c);
+        myCard.add(c);
         return c;
     }
     public Card addCard(Card c) {
-        pcard.add(c);
+        myCard.add(c);
         return c;
     }
     public boolean stay() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Stay? Y/N");
+        System.out.println("Stay or Hit? Stay/Hit");
         boolean temp = false;
-        if(scan.next().equals("N")) {
+        if(scan.next().equals("Stay")) {
             temp = true;
         }
         return temp;
@@ -58,7 +58,7 @@ public class Player
     }
     public int handTotal() {
         int value = 0;
-        for (Card c : pcard) {
+        for (Card c : myCard) {
             if (c.getValue() == 1) {
                 if (value <= 10) {
                     value += 11;
@@ -70,7 +70,7 @@ public class Player
         return value;
     }
     public Card DealerHand() {
-        return pcard.get(1);
+        return myCard.get(1);
     }
     public String toString() {
         return name + " has " + money + " dollars";
