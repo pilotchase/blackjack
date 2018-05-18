@@ -6,25 +6,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Player
 {
-    private double money;
-    private double mon;
+    private double points;
+    private double bet;
     private String name;
     private ArrayList<Card> myCard;
-    public Player(String nm, double m) {
+    public Player(String nm, double p) {
         name = nm;
-        money = m;
+        points = p;
         myCard = new ArrayList<Card>();
     }
     public double bet() {
         Scanner points = new Scanner(System.in);
-        System.out.println("How much would you like to bet?");
-        double mon = points.nextDouble();
-        if (mon > money || mon < 0) {
-            System.out.println("You don't have that much money");
+        System.out.println("Let's start with a bet. From your available balance, how much money are you willing to lose?");
+        double bet = points.nextDouble();
+        if (bet > points || bet < 0) {
+            System.out.println("Sorry, you are trying to gamble on credit. That is not allowed.");
         } else {
-            money -= mon;
+            points -= bet;
         }
-        return money;
+        return points;
     }
     public Card hit(Card c) {
         myCard.add(c);
@@ -46,14 +46,14 @@ public class Player
     public double updateWinnings() {
         double winnings = 0.0;
         double temp = 0.0;
-        temp = (1000 - money);
-        winnings = 2 * (temp) + money;
+        temp = (1000 - points);
+        winnings = 2 * (temp) + points;
         return winnings;
     }
     public double updateWinningsDealer() {
         double winning = 0.0;
         double tem = 0.0;
-        tem = (1000 - money);
+        tem = (1000 - points);
         return tem;
     }
     public int handTotal() {
@@ -73,6 +73,6 @@ public class Player
         return myCard.get(1);
     }
     public String toString() {
-        return name + " has " + money + " dollars";
+        return name + " has " + points + " dollars";
     }
 }
