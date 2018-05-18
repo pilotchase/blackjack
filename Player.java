@@ -15,6 +15,9 @@ public class Player
         points = p;
         myCard = new ArrayList<Card>();
     }
+    public void getPlayerHand(){
+        return myCard.get();   
+    }
     public double bet() {
         Scanner points = new Scanner(System.in);
         System.out.println("Let's start with a bet. From your available balance, how much money are you willing to lose?");
