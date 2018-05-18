@@ -1,12 +1,12 @@
 /**
 (c) C. Morgan - 2018
-**/
+*/
 
 import java.util.ArrayList;
 import java.util.Random;
 public class Deck
 {
-    private Card temp;
+    private Card holder;
     private ArrayList<Card> deck;
     public Deck() {
          deck = new ArrayList<Card>();
@@ -15,10 +15,10 @@ public class Deck
         int val = 0;
         Random rand = new Random();
         int index = rand.nextInt(51 - val);
-        Card temp =  deck.get(index);
+        Card holder =  deck.get(index);
         deck.remove(index);
         val++;
-        return temp;
+        return holder;
     }
     public void createDeck() {
         String[] suits = {"Hearts", "Clubs", "Spades", "Diamonds"};
@@ -27,12 +27,12 @@ public class Deck
         for(String s : suits) {
             int value = 1;
             for(String r : ranks) {
-                Card temp = new Card(value , s, r);
+                Card holder = new Card(value , s, r);
                 value++;
                 if(value > 10) {
                     value = 10;
                 }
-                deck.add(temp);
+                deck.add(holder);
             }
         }
     }
